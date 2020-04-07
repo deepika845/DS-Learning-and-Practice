@@ -11,8 +11,8 @@ public class AllPermute {
         String ros=s.substring(1);
         ArrayList<String> mr = new ArrayList<>();
         ArrayList<String> rr = getPermute(ros);
-        for(int i=0;i<rr.size();i++){
-            String sf=rr.get(i);
+        for(int index=0;index<rr.size();index++){
+            String sf=rr.get(index);
             for(int j=0;j<=sf.length();j++){
                 String sls=sf.substring(0,j)+ch+sf.substring(j);
                 mr.add(sls);
