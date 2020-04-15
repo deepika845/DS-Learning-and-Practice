@@ -18,7 +18,7 @@ public class RemoveDuplicates {
                 sb.append(str.charAt(i));
             }
             else{
-                sb.append(str.charAt(index)+""+count);
+                sb.append(str.charAt(index));
                 i=index;
 
             }

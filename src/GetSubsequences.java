@@ -46,7 +46,7 @@ public class GetSubsequences {
             return;
         }
 
-        for (int i =1 ; i <=6 && i<=target ; i++) {
+        for (int i =1 ; i <=6 && i<=target ; i++){
 
             dice(processed+i,target-i);
         }

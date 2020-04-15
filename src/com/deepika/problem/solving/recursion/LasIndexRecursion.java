@@ -1,3 +1,5 @@
+package com.deepika.problem.solving.recursion;
+
 public class LasIndexRecursion {
     public static int lastIndexCheck(int arr[],int si,int data){
         if(si==arr.length)
