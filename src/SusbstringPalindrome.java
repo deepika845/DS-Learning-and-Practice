@@ -14,7 +14,8 @@ public class SusbstringPalindrome {
             //Check for odd length
             int left = i;
             int right = i;
-            while(left >= 0 && right < line.length()){
+            while(left >= 0 && right < line.length())
+            {
                 if(line.charAt(left--) == line.charAt(right++)){
                     System.out.println(line.substring(left+1, right));
                 }else{
@@ -35,4 +36,5 @@ public class SusbstringPalindrome {
         }
 
     }
+
 }

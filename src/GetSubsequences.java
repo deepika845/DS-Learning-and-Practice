@@ -1,10 +1,21 @@
 public class GetSubsequences {
 
+    public static int getCount(int target){
+        if(target == 0){
+            return 1;
+        }
+         int count=0;
+        for (int i=1;i<=6 && i<=target ; i++){
+            count=count + getCount(target-i);
+        }
+        return count;
+    }
     public static void main(String[] args) {
         //subsequence("","abc");
         //skipi("","hihihi");
         //dice("",4);
-        numpad("","19");
+        //numpad("","19");
+        System.out.println(getCount(3));
     }
 
     public static void subsequence(String processed,String unprocessed){
