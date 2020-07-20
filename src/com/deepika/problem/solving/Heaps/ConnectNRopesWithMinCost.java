@@ -19,6 +19,7 @@ public class ConnectNRopesWithMinCost {
         int res=0;
         while (pp.size() > 1){
             int first = pp.poll();
+
             int second = pp.poll();
             res += (first + second);
             pp.add(first + second);

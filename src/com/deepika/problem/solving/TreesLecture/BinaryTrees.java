@@ -14,13 +14,16 @@ public class BinaryTrees {
         }
         System.out.println("Enter the direction"+node.value);
         String dir=s.next();
-        if("dir".equals("left")){
+        if(dir.equals("left")){
             node.left=insert(node.left,s);
         }
         else{
             node.right=insert(node.right,s);
         }
         return node;
+    }
+    public void findLCa(int a ,int b){
+     findLCA(a,b,this.root);
     }
     public void display(){
         display(this.root,"");
@@ -64,6 +67,26 @@ public class BinaryTrees {
         int max=Math.max(diameter(node.left),diameter(node.right));
         return Math.max(max,current);
     }
+    public boolean findLCA(int a ,int b, Node root){
+        if(root == null){
+            return false;
+        }
+        if(root.value == a || root.value == b){
+            return true;
+        }
+        boolean b1 = findLCA(a,b,root.left);
+        boolean b2 = findLCA(a,b,root.right);
+        if (b1 && b2){
+            System.out.println(root.value);
+            return false;
+        }
+        if (b1 || b2 ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     class Node{
         int value;
         Node left;
@@ -71,5 +94,6 @@ public class BinaryTrees {
         public Node(int value){
             this.value=value;
         }
+
     }
 }

@@ -11,8 +11,11 @@ public class BinaryTreeClient {
         tree.insert(s);
         tree.insert(s);
         tree.insert(s);
+        tree.insert(s);
+        tree.insert(s);
+        tree.insert(s);
         tree.display();
-        System.out.println(tree.find(3));
+        tree.findLCa(6,3);
 
     }
 }

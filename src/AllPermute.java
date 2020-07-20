@@ -41,6 +41,6 @@ public class AllPermute {
     }
 
     public static void main(String[] args) {
-        System.out.println(getSumDice(0,10).size());
+        System.out.println(getSumDice(0,10));
     }
 }

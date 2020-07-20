@@ -31,6 +31,7 @@ class FindSubArrayZero
         insert(hashMap, 0, -1);
 
         int sum = 0;
+        int maxLen = 0;
 
         // traverse the given array
         for (int i = 0; i < A.length; i++)
@@ -46,19 +47,21 @@ class FindSubArrayZero
 
                 // find all sub-arrays with same sum
                 for (Integer value: list) {
-                    System.out.println("Subarray [" + (value + 1) + ".." +
-                            i + "]");
+                    if((i-value)>maxLen){
+                        maxLen=i-value;
+                    }
                 }
             }
 
             // insert (sum so far, current index) pair into the Multi-map
             insert(hashMap, sum, i);
         }
+        System.out.println(maxLen);
     }
 
     public static void main (String[] args)
     {
-        int[] A = { 3, 4, -7, 3, 1, 3, 1, -4, -2, -2 };
+        int[] A = { 1, 2, -7, 3, 1, 3, 1, -4, -2, -2 };
 
         printallSubarrays(A);
     }
