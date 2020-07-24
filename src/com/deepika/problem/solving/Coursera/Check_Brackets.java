@@ -6,43 +6,44 @@ import java.io.IOException;
 import java.util.Stack;
 
 
-
-public class Check_Brackets {
-    public static void main(String[] args) throws IOException {
-        InputStreamReader input_stream = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input_stream);
-        String text = reader.readLine();
-        boolean b = true;
+class Check_Brackets {
+    static int pos =1;
+    public static boolean checkIfBalanced(String text){
         Stack<Bracket> opening_brackets_stack = new Stack<Bracket>();
         for (int position = 0; position < text.length(); ++position) {
             char next = text.charAt(position);
 
             if (next == '(' || next == '[' || next == '{') {
-                // Process opening bracket, write your code here
                 opening_brackets_stack.push(new Bracket(next,position));
+                // Process opening bracket, write your code here
             }
 
             if (next == ')' || next == ']' || next == '}') {
                 // Process closing bracket, write your code here
-                if(opening_brackets_stack.empty()){
-                    System.out.println("0");
-                    b=false;
-                    break;
+                if(opening_brackets_stack.isEmpty()){
+                    return false;
                 }
-                Bracket toCheck = opening_brackets_stack.pop();
-                if(toCheck.type == '(' && next != ')' || toCheck.type == '{' && next != '}'|| toCheck.type == '[' && next != ']'){
-                    b=false;
-                    System.out.println(toCheck.position+1);
-                    break;
+                Bracket popped = opening_brackets_stack.pop();
+                if(popped.type=='[' && next !=']' || popped.type=='{' && next !='}' || popped.type=='(' && next !=')'){
+                    pos = position+1;
+                    return false;
                 }
-            }
-            if(opening_brackets_stack.size() == 1){
-                System.out.println(1);
+
+
             }
         }
-        if(b && !(opening_brackets_stack.size()==1) ){
+        return opening_brackets_stack.isEmpty();
+    }
+    public static void main(String[] args) throws IOException {
+        InputStreamReader input_stream = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input_stream);
+        String text = reader.readLine();
+        if(checkIfBalanced(text)){
             System.out.println("Success");
         }
-        // Printing answer, write your code here
+        else {
+            System.out.println(pos);
+        }
+
     }
 }
