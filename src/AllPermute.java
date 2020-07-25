@@ -19,7 +19,7 @@ public class AllPermute {
             }
         }
         return mr;
-    z}
+    }
     public static ArrayList<String> getSumDice(int curr,int end){
         if(curr==end){
             ArrayList<String> br= new ArrayList<>();
