@@ -14,8 +14,9 @@ public class BinaryTreeClient {
         tree.insert(s);
         tree.insert(s);
         tree.insert(s);
-        tree.display();
-        tree.findLCa(6,3);
+        //tree.display();
+        //tree.findLCa(6,3);
+        tree.inorderWithoutRecursion();
 
     }
 }

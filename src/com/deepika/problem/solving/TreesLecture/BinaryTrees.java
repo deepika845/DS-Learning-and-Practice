@@ -1,6 +1,7 @@
 package com.deepika.problem.solving.TreesLecture;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class BinaryTrees {
     private Node root;
@@ -85,6 +86,26 @@ public class BinaryTrees {
         }
         else {
             return false;
+        }
+
+    }
+    public void inorderWithoutRecursion(){
+        inorderWithoutRecursion(root);
+    }
+    public void inorderWithoutRecursion(Node root){
+        if(root == null){
+            return;
+        }
+        Node curr = root;
+        Stack<Node> ss = new Stack<Node>();
+        while (curr != null || ss.size() > 0){
+            while (curr != null){
+                ss.push(curr);
+                curr =curr.left;
+            }
+            Node popped = ss.pop();
+            System.out.println(popped.value + "->");
+            curr = popped.right;
         }
     }
     class Node{
