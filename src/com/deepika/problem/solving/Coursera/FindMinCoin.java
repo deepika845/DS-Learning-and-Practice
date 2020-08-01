@@ -1,7 +1,7 @@
 package com.deepika.problem.solving.Coursera;
 
 import java.util.*;
-class gitt FindMinCoin{
+class FindMinCoin{
     public static int returnMin(int sum,int i){
         if(sum == i){
             return 1;
