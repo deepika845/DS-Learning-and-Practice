@@ -12,8 +12,7 @@ public class SortOneStackUsingAnother {
         kk = sortTheSatck(kk);
         System.out.println(kk);
     }
-
-    private static Stack<Integer>  sortTheSatck(Stack<Integer> kk) {
+    private static Stack<Integer> sortTheSatck(Stack<Integer> kk) {
         Stack<Integer> mediator = new Stack<Integer>();
         mediator.push(kk.pop());
         while (!kk.isEmpty()){
