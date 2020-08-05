@@ -226,6 +226,21 @@ public class LinkedList {
 
         return slow;
     }
+    public int findMid(){
+        int count = 0;
+        Node curr = head;
+        while(curr.next!= null) {
+            if(curr.next.next!=null){
+                curr =curr.next.next;
+                count +=1;
+            }
+            else {
+                count+=1;
+                curr=curr.next;
+            }
+        }
+        return count;
+    }
 
     public LinkedList mergesort(LinkedList list){
 
@@ -302,6 +317,33 @@ public class LinkedList {
         this.tail=even_tail;
 
     }
+    public Node findPrev(Node right){
+        Node curr = head;
+        Node prevCurr = null;
+        while ((!(curr.next==null)) && !(curr == right) ){
+            curr = curr.next;
+            prevCurr=curr;
+        }
+        return prevCurr;
+    }
+   /* public boolean checkIfPalindrome(){
+        Node left = head;
+        Node right = tail;
+        int count=0;
+      //  if()
+        //int mid = findMid();
+        while (!(left==right) && count<=mid){
+            if(left.value==right.value){
+                left=left.next;
+                right=findPrev(right);
+                count=count+1;
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
+    }*/
     void reverset(int k){
         reverset(head,k);
     }
@@ -332,6 +374,7 @@ public class LinkedList {
         // prev is now head of input list
         return prev;
     }
+
 
 
     class Node{

@@ -7,12 +7,13 @@ public class ListClient {
         LinkedList list = new LinkedList();
         list.insertlast(1);
         list.insertlast(2);
-        list.insertlast(3);
-        list.insertlast(4);
+        list.insertlast(1);
+        list.insertlast(1);
+     // list.checkIfPalindrome();
 //        list.insertfirst(3);
 //        list.insertfirst(2);
-       list.insertlast(5);
-       list.insertlast(6);
+      // list.insertlast(5);
+       // list.insertlast(6);
 
 //        list.display();
 //        System.out.println();
@@ -22,11 +23,10 @@ public class ListClient {
 //        list1.display();
 
         //list.odd_even();
-        list.reverset(3);
+       // list.reverset(3);
 
-        list.display();
-//        System.out.println(list.deletefirst());
-//
+        //list.display();
+//        System.out.println(list.deletefirst());//
 //        System.out.println(list.deletelast());
 //        System.out.println(list.mid());
 
