@@ -32,6 +32,45 @@ public class CloneLinkedList {
         return newNode;
 
     }
+    public static Node efficientClone(Node node){
+        Node curr = node;
+        while (curr!=null){
+            Node temp = curr.next;
+            curr.next = new Node(curr.data);
+            curr.next.next=temp;
+            curr=temp;
+        }
+        curr=node;
+        while (curr != null)
+        {
+            if(curr.next != null)
+                curr.next.prev = (curr.prev != null)
+                        ? curr.prev.next : curr.prev;
+
+            // move to the next newly added node by
+            // skipping an original node
+            curr = (curr.next != null) ? curr.next.next
+                    : curr.next;
+        }
+
+        Node original = node, copy = node.next;
+
+        // save the start of copied linked list
+        Node temp = copy;
+
+        // now separate the origiznal list and copied list
+        while (original != null && copy != null)
+        {
+            original.next = (original.next != null)?
+                    original.next.next : original.next;
+
+            copy.next = (copy.next != null) ? copy.next.next
+                    : copy.next;
+            original = original.next;
+            copy = copy.next;
+        }
+        return temp;
+    }
 
 
     public static void main(String[] args) {
@@ -46,10 +85,11 @@ public class CloneLinkedList {
         two.prev=one;
         three.next=four;
         three.prev =three;
-        four.next=one;
+        four.prev=one;
         Set<Integer> vv = new HashSet<>();
         Node cloneRoot = findClone(root,vv);
         System.out.println(cloneRoot.data);
         System.out.println(cloneRoot.prev.data);
+        efficientClone(one);
     }
 }

@@ -84,8 +84,7 @@ class WordSquareResque {
             return;
         }
 
-        for (int i = 0; i < 26; i++) {
-            if (node.children[i] != null) {
+        for (int i = 0; i < 26; i++) { if (node.children[i] != null) {
                 getChildren(node.children[i], s + (char) ('a' + i), children);
             }
         }
