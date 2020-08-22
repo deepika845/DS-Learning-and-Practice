@@ -8,7 +8,7 @@ public class AutoComplete {
         Trie[] children = new Trie[26];
         boolean isWord;
     }
-    private Set<String> buildTrie(String[] words,String prefix)
+    private Trie buildTrie(String[] words)
     {
         Trie root = new Trie();
         for (String word : words) {
@@ -22,13 +22,29 @@ public class AutoComplete {
             }
             current.isWord = true;
         }
-        Trie node = search(root,prefix);
-        Set<String> allCompletes = new HashSet<String>();
-        if (node==null){
-            return allCompletes;
+        return root;
+    }
+    public int findMinDeletion(String[] words,String incorrect,String find){
+        Trie root = buildTrie(words);
+        Trie curr = root;
+        int min = Integer.MAX_VALUE;
+        Trie currPrev = null;
+        for (char c : incorrect.toCharArray()){
+            int index = c-'a';
+            if(curr.children[index]!=null){
+                curr=curr.children[index];
+                if (curr.isWord){
+                currPrev=curr;}
+                find+=(char)(index+'a');
+                if(find.length()<incorrect.length()){
+                    if(min>(incorrect.length()-find.length()) && curr.isWord){
+                        min = incorrect.length()-find.length();
+                    }
+                }
+            }
         }
-        findPrefix(node,prefix,allCompletes);
-        return allCompletes;
+        return min;
+
     }
     private Trie search(Trie node,String prefix) {
         Trie curr = node;
@@ -59,8 +75,9 @@ public class AutoComplete {
 
     public static void main(String[] args) {
         AutoComplete kk = new AutoComplete();
-        String[] dict = {"abc", "acd", "bcd", "def", "a", "aba"};
-        System.out.println(kk.buildTrie(dict,"a"));
+        //String[] dict = {"abc", "acd", "bcd", "def", "a", "aba"};
+        //System.out.println(kk.buildTrie(dict,"a"));
+      kk.findMinDeletion(new String[]{"a","aa","ac","aba"},"abc","");
 
     }
 }
