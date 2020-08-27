@@ -5,10 +5,13 @@ import java.util.Scanner;
 public class EncodeDecode {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        String text =s.next();
         int ss = s.nextInt();
-        String i = encoder(ss);
-        System.out.println(i);
-        //System.out.println( decoder(ss));
+        int ss1 = s.nextInt();
+        System.out.println(baseConversion(text,ss,ss1));
+//        String i = encoder(ss);
+//        System.out.println(i);
+//        System.out.println( decoder(ss));
        // System.out.println(DecodedValue);
     }
 
@@ -31,7 +34,19 @@ public class EncodeDecode {
         encoded.reverse();
         return encoded.toString();
     }
+    public static String baseConversion(String s , int b1,int b2){
+        boolean isNegative = s.startsWith("-") ;
+        int numInt = 0;
+        for (int i = (isNegative?1:0);i<s.length();i++){
+            numInt*=b1;
+            numInt+=(Character.isDigit(s.charAt(i))?s.charAt(i)-'0':s.charAt(i)-'A'+10);
+        }
+        return (isNegative?"-":"")+(numInt==0?"0": powerOfBase(numInt,b2));}
 
+    private static String powerOfBase(int numInt, int b2) {
+        return (numInt==0?"":powerOfBase(numInt/b2,b2)+(char)(numInt%b2>=10?numInt%b2+'A'-10:'0'+numInt%b2));
+
+    }
 
     private static int decoder(String ss) {
        // boolean isNegative =false;
