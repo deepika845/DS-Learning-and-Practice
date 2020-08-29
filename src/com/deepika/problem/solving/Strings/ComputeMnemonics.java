@@ -2,7 +2,7 @@ package com.deepika.problem.solving.Strings;
 
 public class ComputeMnemonics {
     public static void main(String[] args) {
-        computeAllmnemonics("12345","");
+        computeAllmnemonics("9","");
     }
 
     private static void computeAllmnemonics(String unprocessed,String processed ) {
