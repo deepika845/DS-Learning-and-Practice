@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class EncodeDecode {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        String text =s.next();
-        int ss = s.nextInt();
-        int ss1 = s.nextInt();
-        System.out.println(baseConversion(text,ss,ss1));
+        System.out.println('z'-'a');
+//        Scanner s = new Scanner(System.in);
+//        String text =s.next();
+//        int ss = s.nextInt();
+//        int ss1 = s.nextInt();
+//        System.out.println(baseConversion(text,ss,ss1));
 //        String i = encoder(ss);
 //        System.out.println(i);
 //        System.out.println( decoder(ss));
