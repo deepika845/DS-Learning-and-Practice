@@ -34,4 +34,4 @@ public class LookAndSAy {
         return findNthLookAndSay1(i,j+1,sb);
     }
 
-}
+}//Time Complexity O(n*2^n)
