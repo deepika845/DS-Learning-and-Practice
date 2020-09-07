@@ -63,8 +63,47 @@ public class ReverseSubList {
         rs.head.next.next.next = rs.new Node(4);
         rs.head.next.next.next.next = rs.new Node(-1);
         rs.head.next.next.next.next.next= rs.new Node(-9);
-        rs.reverseSubList(1,5);
+        //rs.reverseSubList(1,5);
+        rs.reverseKthTime(3);
         rs.printList();
+
+    }
+    private void reverseKthTime(int k){
+        reverseKthTime(k,null,head,0,2);
+    }
+
+    private void reverseKthTime(int k,Node prev, Node curr,int m,int n) {
+        if(m==n){
+            return;
+        }
+        int count =1;
+        int prevtt=0;
+        if(prev!=null){
+         prevtt=prev.value;
+        }
+        int currtt=curr.value;
+        //Node curr = head;
+        Node ahead =null;
+        //Node prev = null;
+
+           while (count<k){
+            ahead = curr.next;
+            int x = ahead.value;
+            curr.next=ahead.next;
+            if(prev==null) {
+                ahead.next = head;
+                head =ahead;
+            }
+            else{
+                int vv=prev.next.value;
+                ahead.next=prev.next;
+                prev.next=ahead;
+            }
+            count++;
+            //prev=curr;
+        }
+            reverseKthTime(k,curr,curr.next,m+1,n);
+
 
     }
 }
