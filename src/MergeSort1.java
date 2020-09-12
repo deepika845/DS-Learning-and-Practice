@@ -5,7 +5,7 @@ public class MergeSort1 {
 
         int ar[]={5,4,3,2,1};
 
-        System.out.println(Arrays.toString(divide(ar)));
+       divide(ar);
     }
 
     public static int[] divide(int ar[]){
@@ -30,7 +30,7 @@ public class MergeSort1 {
         int j=0;
         int k=0;
 
-        while(i<first.length && j<second.length){
+      while(i<first.length && j<second.length){
 
             if(first[i]<second[j]){
 

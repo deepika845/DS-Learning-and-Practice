@@ -1,4 +1,6 @@
 package com.deepika.problem.solving.linkedlist;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ReverseSubList {
     Node head;
@@ -59,13 +61,15 @@ public class ReverseSubList {
         ReverseSubList rs = new ReverseSubList();
         rs.head = rs.new Node(3);
         rs.head.next = rs.new Node(2);
-        rs.head.next.next = rs.new Node(5);
+        Node fifth = rs.new Node(5);
+        rs.head.next.next = fifth;
         rs.head.next.next.next = rs.new Node(4);
-        rs.head.next.next.next.next = rs.new Node(-1);
-        rs.head.next.next.next.next.next= rs.new Node(-9);
+        rs.head.next.next.next.next = rs.new Node(8);
+        rs.head.next.next.next.next.next= fifth;
         //rs.reverseSubList(1,5);
-        rs.reverseKthTime(3);
-        rs.printList();
+//        rs.reverseKthTime(3);
+//        rs.printList();
+    rs.testCycle();
 
     }
     private void reverseKthTime(int k){
@@ -105,5 +109,35 @@ public class ReverseSubList {
             reverseKthTime(k,curr,curr.next,m+1,n);
 
 
+    }
+    public int testCycle(){
+        Node mm =  testCycle(new HashSet<>());
+        if(mm==null){
+            return -1;
+        }
+        else{
+            return mm.value;
+        }
+    }
+    public Node testCycle(Set<Node> visited){
+     Node slow = head;
+     Node fast =head;
+     while (fast!=null && fast.next!=null){
+         slow=slow.next;
+         int d = slow.value;
+         fast=fast.next.next;
+         int a = fast.value;
+         //visited.add(fast);
+         if(slow==fast){
+             if(visited.contains(fast)){
+                 return fast;
+             }
+             else {
+                 continue;
+             }
+         }
+         visited.add(slow.next);
+     }
+       return null;
     }
 }
