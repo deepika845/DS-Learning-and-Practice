@@ -62,6 +62,7 @@ public class LevelOrderQueue {
         }
         return levels;
     }
+
     public static ArrayList<ArrayList<Integer>> levelReverse(){
         ArrayList<ArrayList<Integer>> level = new ArrayList<ArrayList<Integer>>();
         Queue<Node> queueOrder = new LinkedList<Node>();
@@ -98,6 +99,32 @@ public class LevelOrderQueue {
         return level;
 
     }
+
+//    public static ArrayList<ArrayList<Integer>> reverseLevelOrder()
+//    {
+//        ArrayList<ArrayList<Integer>> levels = new ArrayList<ArrayList<Integer>>();
+//        Queue<Node> queueOrder = new LinkedList<Node>();
+//        queueOrder.add(root);
+//        Stack<Node> stackOrder = new Stack<Node>();
+//       return recursionReverse(levels,queueOrder,stackOrder);
+//
+//    }
+
+//    private static ArrayList<ArrayList<Integer>> recursionReverse(ArrayList<ArrayList<Integer>> levels, Queue<Node> queueOrder,Stack<Node> stackOrder) {
+//        while (!queueOrder.isEmpty()){
+//            Node currNode = queueOrder.remove();
+////            Stack<Node> stackMaintained=new Stack<Node>();
+////            stackMaintained.push(currNode);
+//            stackOrder.push(currNode);
+//            if(currNode.left!=null){
+//                stackOrder.push(currNode.left);
+//            }
+//            if(currNode.right!=null){
+//                stackOrder.push(currNode.right);
+//            }
+//        }
+//    }
+
     public static void main(String[] args) {
         root=new Node(1);
         root.left=new Node(2);

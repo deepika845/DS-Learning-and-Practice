@@ -1,12 +1,13 @@
-package com.deepika.problem.solving;
+package com.deepika.problem.solving.TreesLecture;
+
 
 public class BinaryTree {
     Node root;
     class Node{
-        int data;
+        char data;
         Node left;
         Node right;
-        Node(int data){
+        Node(char data){
             this.data=data;
         }
     }
@@ -18,19 +19,27 @@ public class BinaryTree {
     }
     public static void main(String[] args) {
         BinaryTree bt=new BinaryTree();
-        bt.root=bt.new Node(1);
-        bt.root.left=bt.new Node(2);
-        bt.root.right=bt.new Node(3);
-        bt.root.left.left=bt.new Node(4);
-        bt.root.left.left.left=bt.new Node(8);
-        bt.root.right.right=bt.new Node(5);
-        bt.root.right.left=bt.new Node(6);
-        bt.root.right.right.left=bt.new Node(7);
-
+        bt.root=bt.new Node('A');
+        bt.root.right=bt.new Node('B');
+      //  bt.root.right=bt.new Node('I');
+        //bt.root.left.left=bt.new Node('C');
+        //bt.root.left.left.left=bt.new Node('D');
+        //bt.root.left.left.right=bt.new Node('E');
+       // bt.root.left.right=bt.new Node('F');
+        //bt.root.left.right.right=bt.new Node('G');
+        //bt.root.left.right.right.left=bt.new Node('H');
+        bt.root.right.left=bt.new Node('C');
+        bt.root.right.right=bt.new Node('D');
+        //bt.root.right.right.right=bt.new Node('P');
+        bt.root.right.left.left=bt.new Node('E');
+        //bt.root.right.left.right.left=bt.new Node('L');
+        //bt.root.right.left.right.right=bt.new Node('N');
+        //bt.root.right.left.right.left.right=bt.new Node('M');
         //System.out.println(bt.checkIfBalanced(bt.root));
-        System.out.println(bt.isComplete(bt.root).size);
+      //  System.out.println(bt.isComplete(bt.root).size);
         //System.out.println(rss.size);
         //System.out.println(isBalanced);
+        bt.findKthSymmetric(bt.root,3);
     }
     public int height (int n){
         return (int)Math.ceil(Math.log(n+1)/Math.log(2));
@@ -77,6 +86,31 @@ public class BinaryTree {
             return true;
         }
         return false;
+    }
+    public int count(Node node){
+        if(node==null){
+            return 0;
+        }
+        if(node.left==null && node.right==null){
+            return 1;
+        }
+        return count(node.left)+count(node.right)+1;
+    }
+    public Node findKthSymmetric(Node root, int k){
+        if(root == null){
+            return null;
+        }
+        char sss=root.data;
+        if(root.left==null && root.right==null){
+            return root;
+        }
+        Node node1=findKthSymmetric(root.left,k);
+        Node node2=findKthSymmetric(root.right,k);
+        if(Math.abs(count(root.left)-count(root.right))<=3 && (node1!=null || node2!=null)){
+            return root;
+        }
+        System.out.println(root.data);
+        return null;
     }
 
     private int height(Node left) {
