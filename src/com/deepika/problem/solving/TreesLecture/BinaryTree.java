@@ -20,18 +20,19 @@ public class BinaryTree {
     public static void main(String[] args) {
         BinaryTree bt=new BinaryTree();
         bt.root=bt.new Node('A');
+        bt.root.left=bt.new Node('B');
         bt.root.right=bt.new Node('B');
       //  bt.root.right=bt.new Node('I');
         //bt.root.left.left=bt.new Node('C');
         //bt.root.left.left.left=bt.new Node('D');
         //bt.root.left.left.right=bt.new Node('E');
-       // bt.root.left.right=bt.new Node('F');
+        bt.root.left.right=bt.new Node('C');
         //bt.root.left.right.right=bt.new Node('G');
         //bt.root.left.right.right.left=bt.new Node('H');
         bt.root.right.left=bt.new Node('C');
-        bt.root.right.right=bt.new Node('D');
+       // bt.root.right.right=bt.new Node('D');
         //bt.root.right.right.right=bt.new Node('P');
-        bt.root.right.left.left=bt.new Node('E');
+       // bt.root.right.left.left=bt.new Node('E');
         //bt.root.right.left.right.left=bt.new Node('L');
         //bt.root.right.left.right.right=bt.new Node('N');
         //bt.root.right.left.right.left.right=bt.new Node('M');
@@ -39,7 +40,8 @@ public class BinaryTree {
       //  System.out.println(bt.isComplete(bt.root).size);
         //System.out.println(rss.size);
         //System.out.println(isBalanced);
-        bt.findKthSymmetric(bt.root,3);
+        //bt.findKthSymmetric(bt.root,3);
+        System.out.println( bt.isSymmetric(bt.root));
     }
     public int height (int n){
         return (int)Math.ceil(Math.log(n+1)/Math.log(2));
@@ -86,6 +88,21 @@ public class BinaryTree {
             return true;
         }
         return false;
+    }
+    public boolean isSymmetric(Node node){
+        if(node==null){
+            return true;
+        }
+        return isSymmetric(node.left,node.right);
+    }
+    public boolean isSymmetric(Node left,Node right){
+        if(left==null && right==null){
+            return true;
+        }
+        if(left==null || right==null){
+            return false;
+        }
+        return isSymmetric(left.left,right.right) && isSymmetric(left.right,right.left) && (left.data==right.data);
     }
     public int count(Node node){
         if(node==null){

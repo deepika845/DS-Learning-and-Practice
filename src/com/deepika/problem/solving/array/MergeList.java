@@ -6,8 +6,8 @@ public class MergeList {
 
 
     public static void main(String[] args) {
-        int arr[]={3,2,5,4,-1,0};
-         mergeSortTheArray(arr,0,5);
+        int arr[]={3,2,5,4,1};
+         mergeSortTheArray(arr,0,4);
         System.out.println(Arrays.toString(arr));
     }
 
