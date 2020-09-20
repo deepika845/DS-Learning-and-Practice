@@ -1,5 +1,7 @@
 package com.deepika.problem.solving.TreesLecture;
 
+//import org.graalvm.compiler.phases.common.inlining.InliningPhase_OptionDescriptors;
+
 import javax.crypto.spec.PSource;
 import java.util.Scanner;
 
@@ -86,7 +88,8 @@ public class LcaPredictor {
         //ll.printArray(ll.root);
         //System.out.println(ll.root.ch);
      // System.out.println( ll.findLCA('A','E'));
-        System.out.println( ll.findRootToLeaf());
+      //  System.out.println( ll.findRootToLeaf());
+        System.out.println(ll.checkPathWithSpecifiedSum(11));
     }
     public int findRootToLeaf(){
         return findRootToLeaf(root,0);
@@ -100,6 +103,21 @@ public class LcaPredictor {
        // System.out.println(sum);
         return sum;
 
+    }
+    public boolean checkPathWithSpecifiedSum(int sum){
+        if(root==null){
+            return false;
+        }
+        return checkPathWithSpecifiedSum(root,sum);
+    }
+    public boolean checkPathWithSpecifiedSum(Node node,int sum){
+        if(node==null &&  sum==0){
+            return true;
+        }
+        if(sum!=0 && node==null){
+            return false;
+        }
+        return checkPathWithSpecifiedSum(node.left,sum-node.ch) || checkPathWithSpecifiedSum(node.right,sum-node.ch);
     }
 
 }
