@@ -1,19 +1,19 @@
 package com.deepika.problem.solving.TreesLecture;
 
+import javax.crypto.spec.PSource;
 import java.util.Scanner;
 
 public class LcaPredictor {
     Node root;
     class Node{
-        char ch;
+        int ch;
         Node left;
         Node right;
-        Node(char ch){
+        Node(int ch){
             this.ch=ch;
         }
     }
     public void insert(){
-        //
         Scanner s = new Scanner(System.in);
         root =insert(s,null,null);
     }
@@ -25,7 +25,7 @@ public class LcaPredictor {
             String k=s.next();
             if(k.equals("yes")){
                 System.out.println("Enter data");
-                char ch = s.next().charAt(0);
+                int ch = s.nextInt();
                 root= new Node(ch);}
            else {
                return null;
@@ -40,38 +40,38 @@ public class LcaPredictor {
 //            char x = s.next().charAt(0);
         root.left=insert(s,null,root);
         root.right=insert(s,null,root);
-        char ff =root.ch;
+       // char ff =root.ch;
         return root;
     }
-    public char findLCA(char ch1,char ch2){
-        return findLCA(ch1,ch2,this.root).ch;
-    }
-    public Node findLCA(char ch1,char ch2,Node root){
-        if(root==null){
-            return null;
-        }
-        Node left=findLCA(ch1,ch2,root.left);
-        if(left!=null && (root.ch==ch1 || root.ch==ch2)){
-            return root;
-        }
-        Node right = findLCA(ch1,ch2,root.right);
-        if(right!=null && (root.ch==ch1 || root.ch==ch2)){
-            return root;
-        }
-        if(root.ch==ch1 || root.ch==ch2){
-            return root;
-        }
-        if(left!=null && right!=null){
-            return root;
-        }
-        if(left!=null){
-            return left;
-        }
-        if(right!=null){
-            return right;
-        }
-        return null;
-    }
+//    public char findLCA(char ch1,char ch2){
+//        return findLCA(ch1,ch2,this.root).ch;
+//    }
+//    public Node findLCA(char ch1,char ch2,Node root){
+//        if(root==null){
+//            return null;
+//        }
+//        Node left=findLCA(ch1,ch2,root.left);
+//        if(left!=null && (root.ch==ch1 || root.ch==ch2)){
+//            return root;
+//        }
+//        Node right = findLCA(ch1,ch2,root.right);
+//        if(right!=null && (root.ch==ch1 || root.ch==ch2)){
+//            return root;
+//        }
+//        if(root.ch==ch1 || root.ch==ch2){
+//            return root;
+//        }
+//        if(left!=null && right!=null){
+//            return root;
+//        }
+//        if(left!=null){
+//            return left;
+//        }
+//        if(right!=null){
+//            return right;
+//        }
+//        return null;
+//    }
     public void printArray(Node f){
         if(f==null){
             return;
@@ -85,9 +85,27 @@ public class LcaPredictor {
         ll.insert();
         //ll.printArray(ll.root);
         //System.out.println(ll.root.ch);
-        System.out.println( ll.findLCA('A','E'));
+     // System.out.println( ll.findLCA('A','E'));
+        System.out.println( ll.findRootToLeaf());
     }
+    public int findRootToLeaf(){
+        return findRootToLeaf(root,0);
+    }
+    public int findRootToLeaf(Node j,int sum){
+        sum=(sum*2) + j.ch;
+        if(j.left==null && j.right==null){
+            return sum;
+        }
+          sum=findRootToLeaf(j.left,sum)+findRootToLeaf(j.right,sum);
+       // System.out.println(sum);
+        return sum;
+
+    }
+
 }
 //       yes A yes C n n yes F yes D n n yes E n n
 
 
+
+
+       //yes 1 yes 0 yes 1 n m yes 0 no no yes 0 yes 1 0 0 yes 0 n n
