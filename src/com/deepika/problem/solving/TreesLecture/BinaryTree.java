@@ -1,6 +1,5 @@
 package com.deepika.problem.solving.TreesLecture;
-
-
+import java.util.Scanner;
 public class BinaryTree {
     Node root;
     class Node{
@@ -17,31 +16,66 @@ public class BinaryTree {
         int size;
         Node rootTree;
     }
+    class Status
+    {
+        int numTarget;
+        Node ancestor;
+        Status(int numTarget,Node ancestor){
+            this.numTarget=numTarget;
+            ancestor=ancestor;
+        }
+    }
+    public void insert(){
+        Scanner s = new Scanner(System.in);
+        root =insert(s,null);
+    }
+    public Node insert(Scanner s,Node root){
+        if(root==null){
+            System.out.println("Insert ?");
+            String k=s.next();
+            if(k.equals("yes")){
+            System.out.println("Enter data");
+            char ch = s.next().charAt(0);
+            root= new Node(ch);}
+            else{
+                return root;
+            }
+        }
+//        System.out.println("INSERT ?");
+//        String dec=s.next();
+//        if(dec.equals("yes")){
+//            System.out.println("Enter direction : ");
+//            String dir = s.next();
+//            System.out.println("Enter data : ");
+//            char x = s.next().charAt(0);
+                root.left=insert(s,null);
+                root.right=insert(s,null);
+                return root;
+    }
+
     public static void main(String[] args) {
         BinaryTree bt=new BinaryTree();
-        bt.root=bt.new Node('A');
-        bt.root.left=bt.new Node('B');
-        bt.root.right=bt.new Node('B');
-      //  bt.root.right=bt.new Node('I');
-        //bt.root.left.left=bt.new Node('C');
-        //bt.root.left.left.left=bt.new Node('D');
-        //bt.root.left.left.right=bt.new Node('E');
-        bt.root.left.right=bt.new Node('C');
-        //bt.root.left.right.right=bt.new Node('G');
-        //bt.root.left.right.right.left=bt.new Node('H');
-        bt.root.right.left=bt.new Node('C');
-       // bt.root.right.right=bt.new Node('D');
-        //bt.root.right.right.right=bt.new Node('P');
-       // bt.root.right.left.left=bt.new Node('E');
-        //bt.root.right.left.right.left=bt.new Node('L');
-        //bt.root.right.left.right.right=bt.new Node('N');
-        //bt.root.right.left.right.left.right=bt.new Node('M');
-        //System.out.println(bt.checkIfBalanced(bt.root));
-      //  System.out.println(bt.isComplete(bt.root).size);
-        //System.out.println(rss.size);
-        //System.out.println(isBalanced);
-        //bt.findKthSymmetric(bt.root,3);
-        System.out.println( bt.isSymmetric(bt.root));
+        //System.out.println( bt.isSymmetric(bt.root));
+       bt.insert();
+       // bt.printArray(bt.root);
+        bt.findLCA('D','E');
+    }
+    public char findLCA(char c1,char c2){
+        return findLCA(c1,c2,root).ancestor.data;
+    }
+    public Status findLCA(char nodeLeft,char nodeRight,Node curr){
+        if(curr==null)
+        {return new Status(0,null);}
+        Status leftStatus=findLCA(nodeLeft,nodeRight,curr.left);
+        if(leftStatus.numTarget==2){
+            return leftStatus;
+        }
+        Status rightStatus = findLCA(nodeLeft,nodeRight,curr.right);
+        if(rightStatus.numTarget==2){
+            return rightStatus;
+        }
+        int numTarget = leftStatus.numTarget+rightStatus.numTarget+(curr.data==nodeLeft?1:0)+(curr.data==nodeRight?1:0);
+        return new Status(numTarget,(numTarget==2?curr:null));
     }
     public int height (int n){
         return (int)Math.ceil(Math.log(n+1)/Math.log(2));
@@ -135,5 +169,13 @@ public class BinaryTree {
             return 0;
         }
         return height(left.left)+height(left.right)+1;
+    }
+    public void printArray(Node f){
+        if(f==null){
+            return;
+        }
+        printArray(f.left);
+        System.out.println(f.data);
+        printArray(f.right);
     }
 }

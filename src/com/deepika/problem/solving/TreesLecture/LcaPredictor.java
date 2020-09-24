@@ -148,4 +148,4 @@ public class LcaPredictor {
 }
 //       yes A yes C n n yes F yes D n n yes E n n
 //yes 1 yes 0 yes 1 n m yes 0 no no yes 0 yes 1 0 0 yes 0 n n
-//yes 1 yes 3 yes 7 n nn yes 8 n n yes 4 yes 5 n yes 1 n n yes 6 n n
+//yes 1 yes 3 yes 7 n nn yes 8 n n yes 4 yes 5 n yes 1 n n yes 6 n nz
