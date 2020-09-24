@@ -1,8 +1,7 @@
-package com.deepika.problem.solving.HeapSection;
+package com.deepika.problem.solving.HashTable;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Map;
 
 public class MapUsingAl<K,V>{
     private int size=0;

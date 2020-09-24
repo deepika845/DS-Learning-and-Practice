@@ -1,4 +1,4 @@
-package com.deepika.problem.solving.HeapSection;
+package com.deepika.problem.solving.HashTable;
 
 public class HashMapsClient {
     public static void main(String[] args) {

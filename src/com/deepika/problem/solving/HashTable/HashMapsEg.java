@@ -1,4 +1,4 @@
-package com.deepika.problem.solving.HeapSection;
+package com.deepika.problem.solving.HashTable;
 
 import java.util.HashMap;
 

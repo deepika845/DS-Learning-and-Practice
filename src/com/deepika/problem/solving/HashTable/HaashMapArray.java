@@ -1,4 +1,4 @@
-package com.deepika.problem.solving.HeapSection;
+package com.deepika.problem.solving.HashTable;
 
 public class HaashMapArray {
     Entity[] entity = new Entity[10];
