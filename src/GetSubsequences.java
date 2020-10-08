@@ -14,8 +14,8 @@ public class GetSubsequences {
         //subsequence("","abc");
         //skipi("","hihihi");
         //dice("",4);
-        //numpad("","19");
-        System.out.println(getCount(3));
+        numpad("","19");
+       // System.out.println(getCount(3));
     }
 
     public static void subsequence(String processed,String unprocessed){

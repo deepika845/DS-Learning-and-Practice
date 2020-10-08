@@ -33,7 +33,7 @@ public class FindMedianInTwoSOrtedArray {
         return 0.0;
     }
     public static void main(String[] args) {
-        System.out.println(findMedian(new int[]{5,8,9,10},new int[]{1,3,6}));
+ findMedian(new int[]{5,9,13,15},new int[]{2,4,8});
 
     }
 }

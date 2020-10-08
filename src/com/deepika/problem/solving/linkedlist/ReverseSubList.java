@@ -61,15 +61,16 @@ public class ReverseSubList {
         ReverseSubList rs = new ReverseSubList();
         rs.head = rs.new Node(3);
         rs.head.next = rs.new Node(2);
-        Node fifth = rs.new Node(5);
-        rs.head.next.next = fifth;
+        rs.head.next.next = rs.new Node(5);;
         rs.head.next.next.next = rs.new Node(4);
         rs.head.next.next.next.next = rs.new Node(8);
-        rs.head.next.next.next.next.next= fifth;
+        rs.head.next.next.next.next.next= rs.new Node(9);;
         //rs.reverseSubList(1,5);
 //        rs.reverseKthTime(3);
 //        rs.printList();
-    rs.testCycle();
+   rs.head= rs.swapPairs(rs.head);
+   rs.printList();
+
 
     }
     private void reverseKthTime(int k){
@@ -109,6 +110,42 @@ public class ReverseSubList {
             reverseKthTime(k,curr,curr.next,m+1,n);
 
 
+    }
+    public Node swapPairs(Node head) {
+        //ListNode head1 = null;
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node curr=head;
+        int d1= curr.value;
+        Node prev = null;
+        Node next = curr.next;
+        int d2=next.value;
+        while(curr!=null && curr.next!=null){
+            curr.next=next.next;
+            if(next.next!=null){
+            int d3 = next.next.value;}
+            if(prev==null){
+                next.next=head;
+                int d4 =next.next.value;
+                head = next;
+                int d5 = head.value;
+            }
+            else{
+                next.next=prev.next;
+                int d6 = next.next.value;
+                prev.next=next;
+                int d7=  prev.next.value;
+            }
+            prev=curr;
+            int d8 = prev.value;
+            curr=curr.next;
+
+            if(curr!=null && curr.next!=null){
+                next=curr.next;
+            }
+        }
+        return head;
     }
     public int testCycle(){
         Node mm =  testCycle(new HashSet<>());
