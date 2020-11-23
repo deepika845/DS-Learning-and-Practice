@@ -17,8 +17,22 @@ public class RomanToInteger {
         }
         return sum;
     }
+    public static String findDecimalToRoma(int integer){
+        HashMap<String,Integer> hm= new HashMap<>();
+        int[] values = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        String[] strs = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+        String roman="";
+        for (int i=0;i<=values.length-1;i++){
+            while (integer>=values[i]){
+                roman+=strs[i];
+                integer-=values[i];
+            }
+        }
+        return roman;
+    }
 
     public static void main(String[] args) {
         System.out.println(findRomanToInteger("IX"));
+        System.out.println(findDecimalToRoma(9));
     }
 }
