@@ -8,10 +8,13 @@ public class GraphClient {
         firstGraph.addVertex('C');
         firstGraph.addVertex('D');
         firstGraph.addVertex('E');
-        firstGraph.addEdge('A','B');
+        firstGraph.addEdge('B','A');
+        firstGraph.addEdge('B','C');
+        firstGraph.addEdge('E','A');
+        firstGraph.addEdge('D','E');
         firstGraph.addEdge('A','D');
-        firstGraph.addEdge('B','E');
-        firstGraph.addEdge('C','E');
-        firstGraph.printGraph();
+        //firstGraph.printGraph();
+        //firstGraph.findDFS();
+        System.out.println(firstGraph.containsCycle());
     }
 }
