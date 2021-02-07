@@ -65,6 +65,7 @@ class HeightBalancedTree {
         newNode.right=root;
         root=newNode;
         return root;
+
     }
     public TreeNode rotateLeft(TreeNode root){
         TreeNode newNode = root.right;
