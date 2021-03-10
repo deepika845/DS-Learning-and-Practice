@@ -1,6 +1,7 @@
 package com.deepika.problem.solving.TreesLecture;
 
 
+import java.net.Inet4Address;
 import java.util.*;
 
 public class ViewsInBinaryTree {
@@ -51,12 +52,14 @@ public class ViewsInBinaryTree {
 //        root.right.left=new NodeObj();
 //        root.right.left.data=5;
 //        System.out.println(findBottomView(root));
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left= new Node(4);
-        root.right.right=new Node(5);
-        System.out.println(zigZagTraversal(root));
+//        Node root = new Node(1);
+//        root.left = new Node(2);
+//        root.right = new Node(3);
+//        root.left.left= new Node(4);
+//        root.right.right=new Node(5);
+       // System.out.println(zigZagTraversal(root));
+        //diagonalTraversal(root);
+        printPreOrder("4(2(3)(1))(6(5))");
 
     }
     static class Node{
@@ -101,5 +104,73 @@ public class ViewsInBinaryTree {
         }
         return findZigZag;
     }
+    public static void diagonalTraversal(Node root,int d,Map<Integer,ArrayList<Integer>> hm ){
+        if(root==null){
+            return;
+        }
+        if (!hm.containsKey(d)){
+            ArrayList<Integer> vt= new ArrayList<>();
+            vt.add(root.data);
+            hm.put(d,vt);
+        }
+       else {
+            hm.get(d).add(root.data);
+        }
+        diagonalTraversal(root.right,d,hm);
+       diagonalTraversal(root.left,d+1,hm);
+    }
+    public static void diagonalTraversal(Node root){
+        Map<Integer,ArrayList<Integer>> hm = new TreeMap<>();
+        diagonalTraversal(root,0,hm);
+        for (ArrayList<Integer> att: hm.values()){
+            System.out.println(att);
+        }
 
+    }
+    public static int findIndex(String s, int si,int ei){
+        Stack<Character> sit = new Stack<>();
+        for (int i=si;i<=ei;i++){
+            if(s.charAt(i)=='('){
+                sit.push('(');
+            }
+            else if(s.charAt(i)==')'){
+                char ct= sit.peek();
+                if (ct=='('){
+                    sit.pop();
+                    if (sit.isEmpty()){
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+    public static void printPreOrder(String s){
+        Node root = findTreeFromBracketExpression(s,0,s.length()-1);
+        preOrder(root);
+
+    }
+    public static void preOrder(Node nn){
+        if (nn==null){
+            return;
+        }
+        preOrder(nn.left);
+        System.out.print(nn.data+" ");
+        preOrder(nn.right);
+    }
+    public static Node findTreeFromBracketExpression(String s, int si,int ei){
+        if(si>ei){
+            return null;
+        }
+        Node root =new Node(s.charAt(si)-'0');
+        int index=-1;
+        if(si+1<=ei && s.charAt(si+1)=='('){
+            index =findIndex(s,si,ei);
+        }
+        if (index!=-1){
+            root.left=findTreeFromBracketExpression(s,si+2,index-1);
+            root.right=findTreeFromBracketExpression(s,index+2,ei-1);
+        }
+        return root;
+    }
 }
