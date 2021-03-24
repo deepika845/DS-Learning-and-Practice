@@ -15,6 +15,6 @@ public class JumpGame {
         return jumps;
     }
     public static void main(String[] args) {
-     findMinJumps(new int[]{2,4,1,1,8});
+        findMinJumps(new int[]{2,3,1,1,4});
     }
 }
