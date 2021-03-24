@@ -344,39 +344,79 @@ public class LinkedList {
         }
         return true;
     }*/
-    void reverset(int k){
-        reverset(head,k);
+//    void reverset(int k){
+//        reverset(head,k);
+//    }
+//    Node reverset(Node head, int k)
+//    {
+//        Node current = head;
+//        Node next = null;
+//        Node prev = null;
+//
+//        int count = 0;
+//
+//        /* Reverse first k nodes of linked list */
+//        while (count < k && current != null)
+//        {
+//            next = current.next;
+//            current.next = prev;
+//            prev = current;
+//            current = next;
+//            count++;
+//        }
+//
+//       /* next is now a pointer to (k+1)th node
+//          Recursively call for the list starting from current.
+//          And make rest of the list as next of first node */
+//        if (next != null)
+//            head.next = reverset(next, k);
+//
+//        // prev is now head of input list
+//        return prev;
+//    }
+    public void reverse1(){
+        reverse1(head);
+        display();
     }
-    Node reverset(Node head, int k)
-    {
-        Node current = head;
-        Node next = null;
-        Node prev = null;
-
-        int count = 0;
-
-        /* Reverse first k nodes of linked list */
-        while (count < k && current != null)
-        {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-            count++;
+    public Node reverse1(Node node){
+        if(node.next==null){
+            head=node;
+            return node;
         }
-
-       /* next is now a pointer to (k+1)th node
-          Recursively call for the list starting from current.
-          And make rest of the list as next of first node */
-        if (next != null)
-            head.next = reverset(next, k);
-
-        // prev is now head of input list
-        return prev;
+        Node kk = reverse1(node.next);
+        int f= kk.value;
+        kk.next=node;
+        int f1=node.value;
+      node.next=null;
+        return node;
     }
-
-
-
+    public void reverseSet(int hh){
+        Node prev = null;
+        Node curr = head;
+        Node next=null;
+        int f=size;
+        int k=hh;
+        while (curr.next!=null){
+            while (k-1>0 && (f/3>0)){
+                next=curr.next;
+                curr.next=next.next;
+                if(prev==null){
+                  next.next=head;
+                  head=next;
+                }
+                else {
+                    next.next=prev.next;
+                    prev.next=next;
+                }
+                k--;
+            }
+            k=hh;
+            prev=curr;
+            curr=curr.next;
+            f-=hh;
+        }
+        display();
+    }
     class Node{
 
         int value;

@@ -12,7 +12,8 @@ public class SubstringSearch {
             }
             else{
                 if(j!=0){
-                j=array[j-1];}
+                j=array[j-1];
+                }
                 else{
                     i++;
                 }

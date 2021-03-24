@@ -18,9 +18,29 @@ public class MyGraph<T> {
     public boolean addEdge(T first,T second){
         if(allVertices.containsKey(first) && allVertices.containsKey(second)){
             allVertices.get(first).neighbours.add(allVertices.get(second));
+            //allVertices.get(second).neighbours.add(allVertices.get(first));
             return true;
         }
         return false;
+    }
+    public Vertex cloneTheGraph(){
+        Vertex firstVertex = allVertices.entrySet().iterator().next().getValue();
+        HashMap<T,Vertex> containedMap=new HashMap<>();
+        Vertex nodeClone= cloneTheGraph(firstVertex,containedMap);
+        return nodeClone;
+    }
+    public Vertex cloneTheGraph(Vertex node,HashMap<T,Vertex> containedMap){
+        if(node==null){
+            return node;
+        }
+        if(containedMap.containsKey(node.val)){
+            return containedMap.get(node.val);
+        }
+        Vertex cr = new Vertex(node.val);
+        for (Vertex padosi : node.neighbours){
+            cr.neighbours.add(cloneTheGraph(padosi,containedMap));
+        }
+        return cr;
     }
     public void printGraph(){
         for (T vertex : allVertices.keySet()){
@@ -47,12 +67,41 @@ public class MyGraph<T> {
             }
         }
     }
+    public void topologicalSort(){
+        Integer time =1;
+        Stack<T> allRecord = new Stack<>();
+        List<T> visited = new ArrayList<>();
+        for (Vertex corner : allVertices.values()){
+            if(visited.contains(corner.val)){
+                continue;
+            }
+            time = topologicalSort(allRecord,visited,corner,time);
+        }
+        while (!allRecord.isEmpty()){
+            T g=allRecord.pop();
+            System.out.println(g);
+        }
+    }
+    private Integer topologicalSort(Stack<T> allRecord, List<T> visited, Vertex corner,Integer timeLast) {
+        visited.add(corner.val);
+        T vv=corner.val;
+        for (Vertex padosi : corner.neighbours){
+            if(visited.contains(padosi.val)){
+                continue;
+            }
+            topologicalSort(allRecord,visited,padosi,timeLast++);
+        }
+        allRecord.push(corner.val);
+        return timeLast;
+    }
+
     public void setParent()
     {
         for (Vertex padosi : allVertices.values()){
             parent.put(padosi,null);
         }
     }
+
     public boolean containsCycle(){
         Queue<Vertex> maintainedQueue = new LinkedList<>();
         List<T> allVisited = new ArrayList<>();
@@ -108,6 +157,7 @@ public class MyGraph<T> {
             }
         }
     }
+
     class Vertex{
         T val;
         List<Vertex> neighbours;
@@ -116,4 +166,5 @@ public class MyGraph<T> {
             neighbours=new ArrayList<>();
         }
     }
+
 }

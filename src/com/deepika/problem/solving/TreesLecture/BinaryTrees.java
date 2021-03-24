@@ -1,7 +1,6 @@
 package com.deepika.problem.solving.TreesLecture;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTrees {
     private Node root;
@@ -87,7 +86,34 @@ public class BinaryTrees {
         else {
             return false;
         }
+    }
 
+    public List<List<Integer>> pathSum( int sum) {
+        List<List<Integer>> allPath = new ArrayList<List<Integer>>();
+        List<Integer> currLevel =new ArrayList<Integer>();
+        allPath(root,allPath,currLevel,0,sum);
+        return allPath;
+    }
+    public void allPath(Node root,List<List<Integer>> allPath,List<Integer> currPath,int currSum,int targetSum){
+        if(root==null){
+            return;
+        }
+        currSum+=root.value;
+        currPath.add(root.value);
+        if(root.left==null && root.right==null){
+            if(currSum==targetSum){
+                List<Integer> arr=new ArrayList<Integer>();
+                Collections.copy(currPath,arr);
+                allPath.add(arr);
+            }
+            return;
+        }
+        allPath(root.left,allPath,currPath,currSum,targetSum);
+        if(root.left!=null){
+        currPath.remove(currPath.size()-1);}
+        allPath(root.right,allPath,currPath,currSum,targetSum);
+        if(root.right!=null){
+        currPath.remove(currPath.size()-1);}
     }
     public void inorderWithoutRecursion(){
         inorderWithoutRecursion(root);
@@ -108,6 +134,7 @@ public class BinaryTrees {
             curr = popped.right;
         }
     }
+
     class Node{
         int value;
         Node left;

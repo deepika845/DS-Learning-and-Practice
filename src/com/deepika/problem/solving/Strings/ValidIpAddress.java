@@ -31,7 +31,7 @@ public  class ValidIpAddress{
     private static boolean isValid(String first) {
         if(first.length()>3)
             return false;
-        else if(first.startsWith("0") && first.length()>1){
+        else if(first.startsWith("0") && first.length()>1) {
             return false;
         }
         else {

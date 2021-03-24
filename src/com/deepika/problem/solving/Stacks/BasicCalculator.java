@@ -19,12 +19,7 @@ class BasicCalculator {
             if (sign == '+') {
                 res += (int) stack.pop();
             }
-             else if (sign == '*') {
-                res *= (int) stack.pop();
-            }
-            if (sign == '/') {
-                res /= (int) stack.pop();
-            }else if(sign=='-') {
+            else if(sign=='-') {
                 res -= (int) stack.pop();
             }
         }

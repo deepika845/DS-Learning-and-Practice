@@ -131,6 +131,15 @@ public class BinarySearchTree {
 
         return node1;
     }*/
+    public boolean isBinarySearchTree(Node root,int max,int min){
+        if(root==null){
+            return true;
+        }
+        if(root.value<max || root.value>min){
+            return false;
+        }
+        return (isBinarySearchTree(root.left,root.value,min) && isBinarySearchTree(root.right,max,root.value));
+    }
     class Node{
         int value;
         Node left;
@@ -138,5 +147,17 @@ public class BinarySearchTree {
         public Node(int value){
             this.value=value;
         }
+    }
+    public boolean isSameTree(Node p, Node q) {
+        if(p==null && q==null){
+            return true;
+        }
+        if(p==null || q==null){
+            return false;
+        }
+        if(p.value==q.value){
+            return true;
+        }
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
     }
 }

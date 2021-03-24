@@ -13,6 +13,34 @@ public class ReverseSubList {
             next = null;
         }
     }
+    public Node reverseSubList(Node head,int k,int m){
+        if(k==m){
+            return head;
+        }
+        Node prev=null;
+        Node curr=head;
+        Node next=null;
+        int count =1;
+        while (count<k){
+            prev=curr;
+            curr=curr.next;
+            count++;
+        }
+        while (m-k>0){
+            next=curr.next;
+            curr.next=next.next;
+            if(prev==null){
+                next.next=head;
+                head=next;
+            }
+            else {
+                next.next=prev.next;
+                prev.next=next;
+            }
+            k++;
+        }
+        return head;
+    }
     public void reverseSubList(int x,int y){
         Node curr =head;
         int count =1;
@@ -68,7 +96,7 @@ public class ReverseSubList {
         //rs.reverseSubList(1,5);
 //        rs.reverseKthTime(3);
 //        rs.printList();
-   rs.head= rs.swapPairs(rs.head);
+   rs.head= rs.reverseSubList(rs.head,2,6);
    rs.printList();
 
 
