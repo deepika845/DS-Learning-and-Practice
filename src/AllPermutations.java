@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class AllPermutations {
     public static ArrayList<String> getPermute(String str){
         if(str.length()==0)
+            
         {
             ArrayList<String> kk = new ArrayList<>();
             kk.add("");
