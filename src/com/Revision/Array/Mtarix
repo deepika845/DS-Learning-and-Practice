@@ -1,1 +1,99 @@
+package com.Revision.Array;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Mtarix {
+    public void matrixMultiplication(int[][] arr1,int[][] arr2){
+        int[][] newArr = new int[arr1.length][arr2.length];
+        for (int i = 0 ;i<arr1.length;i++){
+            for (int j=0;j<arr2.length;j++){
+                for (int k=0;k<arr1[i].length;k++){
+                    newArr[i][j] += arr1[i][k] * arr2[k][j];
+                }
+            }
+        }
+        for (int i = 0 ; i < newArr.length;i++){
+            System.out.println(Arrays.toString(newArr[i]));
+        }
+    }
+    public void waveTraversal(int[][] arr){
+        for(int j=0;j<arr[0].length;j++){
+            if(j%2 == 0){
+                for (int i =0 ;i <arr.length;i++){
+                    System.out.print(arr[i][j]+"\t");
+                }
+            }
+            else {
+                for (int i =arr.length-1 ;i>=0;i--){
+                    System.out.print(arr[i][j]+"\t");
+                }
+            }
+            System.out.println();
+        }
+    }
+    public void spiral(int[][] arr){
+        int left =0;
+        int right = arr[0].length-1;
+        int top = 0;
+        int bottom = arr.length-1;
+
+        while (left <= right || top <= bottom){
+             for (int i=left;i<=right;i++){
+                 System.out.print(arr[top][i]+"\t");
+             }
+            System.out.println();
+             top++;
+            for (int i=top;i<=bottom;i++){
+                System.out.print(arr[i][right]+"\t");
+            }
+            System.out.println();
+
+            right--;
+            for (int i=right;i>=left;i--){
+                System.out.print(arr[bottom][i]+"\t");
+            }
+            System.out.println();
+
+            bottom--;
+            for (int i=bottom;i>=top;i--){
+                System.out.print(arr[i][left]+"\t");
+            }
+            System.out.println();
+
+            left++;
+        }
+
+
+    }
+    public static void main(String[] args) {
+//        Scanner s = new Scanner(System.in);
+//        int i = Integer.parseInt(s.nextLine());
+//        int j = Integer.parseInt(s.nextLine());
+//
+//         int[][] arr = new int[i][j];
+//         for ( int k=0;k<arr.length;k++){
+//             for (int l = 0;l<arr[k].length;l++){
+//                 arr[k][l]=Integer.parseInt(s.nextLine());
+//             }
+//         }
+//         for (int t=0;t<arr.length;t++){
+//             System.out.println(Arrays.toString(arr[t]));
+//         }
+//
+//        int i1 = Integer.parseInt(s.nextLine());
+//        int j1 = Integer.parseInt(s.nextLine());
+//
+//        int[][] arr1 = new int[i1][j1];
+//        for ( int k=0;k<arr1.length;k++){
+//            for (int l = 0;l<arr1[k].length;l++){
+//                arr[k][l]=Integer.parseInt(s.nextLine());
+//            }
+//        }
+//        for (int t=0;t<arr1.length;t++){
+//            System.out.println(Arrays.toString(arr1[t]));
+//        }
+
+     new Mtarix().spiral(new int[][]{{1,2,3},{1,2,3},{1,2,3}});
+    }
+}
